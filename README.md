@@ -1,49 +1,46 @@
 # FastAPI-Medical-Appointment-System
 
+
 A FastAPI-based management system for a Medicare Clinic, featuring doctor registries, appointment scheduling, and automated fee calculations.
 
-🚀 Features
-👨‍⚕️ Doctor Management
-Summary Statistics: View total doctors, availability counts, most experienced doctors, and cheapest fees.
+---
 
-Filtering: Filter doctors by specialization, max fee, minimum experience, and availability.
+## 🚀 Features
 
-Search: Keyword-based search across doctor names and specializations.
+### 👨‍⚕️ Doctor Management
+* **Summary Statistics:** View total doctors, availability counts, most experienced doctors, and cheapest fees.
+* **Filtering:** Filter doctors by specialization, max fee, minimum experience, and availability.
+* **Search:** Keyword-based search across doctor names and specializations.
+* **Sorting & Pagination:** Sort doctors by fee, name, or experience with limit-based paging.
+* **Management:** Endpoints to add new doctors, update fees/availability, and delete doctors (safety check included for active appointments).
 
-Sorting & Pagination: Sort doctors by fee, name, or experience with limit-based paging.
+### 📅 Appointment System
+* **Booking:** Create appointments with automated fee calculations based on type and patient status.
+* **Fee Engine Logic:**
+    * **Video:** 20% Discount
+    * **Emergency:** 50% Surcharge
+    * **In-person:** Base Fee
+    * **Senior Citizen:** Additional 15% Discount
+* **Status Management:** Workflow to Confirm, Cancel, and Complete appointments.
+* **Search & Sort:** Search appointments by patient name and sort by fee or date.
 
-Management: Endpoints to add new doctors, update fees/availability, and delete doctors (safety check included for active appointments).
+---
 
-📅 Appointment System
-Booking: Create appointments with automated fee calculations based on type and patient status.
+## ⚙️ Setup and Installation
 
-Fee Engine Logic:
-
-Video: 20% Discount
-
-Emergency: 50% Surcharge
-
-In-person: Base Fee
-
-Senior Citizen: Additional 15% Discount
-
-Status Management: Workflow to Confirm, Cancel, and Complete appointments.
-
-Search & Sort: Search appointments by patient name and sort by fee or date.
-
-
-⚙️ Setup and Installation
-Install Dependencies:
-
-Bash
+### **Install Dependencies**
+```bash
 pip install fastapi uvicorn pydantic
+
+
 Run the Application:
 
 Bash
 uvicorn main:app --reload
 
-📖 API Endpoints
-Doctors
+##📖 API Endpoints
+#Doctors
+
 GET /doctors: Get all doctors.
 
 GET /doctors/summary: Get clinic statistics.
@@ -64,7 +61,8 @@ PUT /doctors/{doctor_id}: Update doctor details.
 
 DELETE /doctors/{doctor_id}: Remove a doctor.
 
-Appointments
+#Appointments
+
 GET /appointments: List all appointments.
 
 POST /appointments: Book a new appointment.
@@ -83,19 +81,7 @@ POST /appointments/{id}/cancel: Set status to cancelled (releases doctor).
 
 POST /appointments/{id}/complete: Set status to completed.
 
-🧪 Data Models
-AppointmentRequest
-patient_name: string (min 2)
 
-doctor_id: integer (gt 0)
-
-date: string (min 8)
-
-reason: string (min 5)
-
-appointment_type: string (default: 'in-person')
-
-senior_citizen: boolean (default: false)
 
 ---
 
